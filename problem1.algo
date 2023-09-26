@@ -1,0 +1,72 @@
+ALGORITHM problem1
+VAR
+    n,m:INTEGER;
+    T: ARRAY[1..n] OF INTEGER;
+    J : ARRAY[1..m] OF INTEGER;
+    i:INTEGER;
+    som:interger;
+BEGIN
+    
+    
+      som:=0;
+       REPEAT
+      read(n,m);
+      UNTIL (n>0) and (m>0)
+
+      PROCEDURE remplireT(n:INTEGER ; T:Tab)
+      
+      BEGIN
+         for (int i = 0; i <= n; i++) {
+            write(T[i]);
+    read(T[i]);
+        }
+      END
+ 
+      PROCEDURE remplireJ(m:INTEGER  , J:Tab)
+      
+      BEGIN
+       for (int j = 0; j <= n; j++) {
+        write(J[j]);
+    read(J[j]);
+     }
+      END
+   
+  
+
+PROCEDURE recherche1(T : ARRAY[1..n] OF INTEGER, J : ARRAY[1..m] OF INTEGER)
+VAR
+    i, j : INTEGER;
+BEGIN
+    som := 0;
+    FOR i FROM 1 TO n DO
+        FOR j FROM 1 TO m DO
+            IF T[i] = J[j] THEN
+                som := som + T[i];
+                BREAK;  // Sortir de la boucle interne si une correspondance est trouvée
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+PROCEDURE recherche2(T : ARRAY[1..n] OF INTEGER, J : ARRAY[1..m] OF INTEGER)
+VAR
+    i, j : INTEGER;
+BEGIN
+    som := 0;
+    FOR i FROM 1 TO n DO
+        FOR j FROM 1 TO m DO
+            IF J[j] = T[i] THEN
+                som := som + T[i];
+                BREAK;  // Sortir de la boucle interne si une correspondance est trouvée
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+remplireT(n, T);
+remplireJ(m, J);
+recherche1(T, J);
+recherche2(T, J);
+  write("la somme du element distinct dans les deux tableau est",som);
+END
+
